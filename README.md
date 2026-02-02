@@ -50,7 +50,7 @@ Il n'a pas de caractère offensif, et ne contient pas de requête destructrice p
 - [GAM](https://github.com/GAM-team/GAM/wiki/How-to-Install-GAM7) :
   - **Attention** : sans GAM, le script ne fonctionnera pas (sauf pour la partie SPF/DKIM/DMARC)
   - GAM doit être installé et paramétré correctement par rapport au GWS à auditer.
-- Python 3.x :
+- Python 3.8+ :
   - les prérequis sont spécifiés dans le fichier "requirements.txt" ;
 - Un compte sur l'environnement GWS avec rôle administrateur.
 
