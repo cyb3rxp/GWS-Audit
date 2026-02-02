@@ -59,7 +59,7 @@ RULES = {
     "check_gmail_delegation": True,
 
     # GDrive
-    "check_drives": False,
+    "check_drives": False,  # /!\ Peut être très long !
     "forbid_public_drive_shares": True,
     "audit_anyone_with_link": True,
     "audit_external_domain_shares": True,
