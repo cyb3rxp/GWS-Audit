@@ -38,13 +38,23 @@ Il n'a pas de caractère offensif, et ne contient pas de requête destructrice p
 
 ## Rapport
 
-- Génération automatique de rapports
+- L'outil embarque une génération automatique de rapports
   - NB : par défaut, les rapports et fichiers de données générés sont dans le dossier "output" (qui est paramétrable au début du script)
 - 3 formats de rapports générés en standard : JSON, MarkDown, et HTML
 
+
+# Usage
+
 ## Prérequis
-- [GAM](https://github.com/GAM-team/GAM/wiki/How-to-Install-GAM7)
-  - **Attention** : sans GAM, le script ne fonctionnera pas (sauf pour la partie SPF/DKIM/DMARC) 
+
+- [GAM](https://github.com/GAM-team/GAM/wiki/How-to-Install-GAM7) :
+  - **Attention** : sans GAM, le script ne fonctionnera pas (sauf pour la partie SPF/DKIM/DMARC)
+  - GAM doit être installé et paramétré correctement par rapport au GWS à auditer.
 - Python 3.x :
-  - les prérequis sont spécifiés ;
+  - les prérequis sont spécifiés dans le fichier "requirements.txt" ;
 - Un compte sur l'environnement GWS avec rôle administrateur.
+
+
+## Lancement de l'outil
+
+Dans un terminal : _python gws_audit.py_ 
