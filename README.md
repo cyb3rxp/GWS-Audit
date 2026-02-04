@@ -33,6 +33,9 @@ Il n'a pas de caractère offensif, et ne contient pas de requête destructrice p
 ## Configuration des audits
 
 - La section RULES, en début de script, permet de paramétrer (activer/désactiver) chaque audit, en spécifiant le booléen (True/False) ;
+   - voici la configuration par défaut (tout activé sauf l'audit GDrive) :
+<img width="1618" height="919" alt="image" src="https://github.com/user-attachments/assets/ded4fff4-e0f9-40d8-9bc1-4128642bc9b8" />
+   
    - NB : l'audit GDrive peut être très long (pour cause d'énumération des fichiers partagés par utilisateur) !
 - Certaines variables peuvent être modifiées, telles que les mots-clef "sensibles" à chercher, ou les mots-clef de détection de comptes partagés.
 
