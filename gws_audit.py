@@ -28,8 +28,7 @@ RULES = {
     #************* /!\ IMPORTANT  /!\ *****************
     # Déclaration du domaine GWS à auditer : 
     # "internal_domain" = suffixe de messagerie du GWS, précédé de '@'
-    # "DNS_domain" = nom de domaine DNS du GWS.
-    
+    # "DNS_domain" = nom de domaine DNS du GWS.  
     "internal_domain": "@domainegws.fr", 
     "DNS_domain": "domainegws.fr",
     #**************************************************
