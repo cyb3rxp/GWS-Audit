@@ -20,13 +20,13 @@ Il n'a pas de caractère offensif, et ne contient pas de requête destructrice p
 
 ### Vérification des bonnes pratiques :
 - comptes sans numéro de téléphone de récupération ;
-- comptes ayant une adresse externe de récupération ;
+- comptes ayant une adresse email externe de récupération ;
 - transferts automatiques vers d'autres BAL ;
 - transferts automatiques avec suppression de l'email ensuite (filtres Gmail) ;
 - comptes inactifs ;
 - périphériques inactifs ;
 - détection de groupes dans lesquels n'importe qui peut poster ;
-- détection de fichiers sensibles par mots-clefs ;
+- détection de fichiers sensibles par mots-clefs (NB : recherche dans leur nom/chemin uniquement, pas dans leur contenu) ;
 - détection de dossiers/partagés sans ACL ("à tous").
 
 
