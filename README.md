@@ -63,3 +63,10 @@ Il n'a pas de caractère offensif, et ne contient pas de requête destructrice p
 Dans un terminal (Windows CMD) : _python.exe .\gws_audit.py_ 
 
 NB : ne pas oublier d'enlever la sécurité du script (cf. code source)
+
+
+# Pour aller plus loin
+
+
+* Solution complémentaire : [AdminPulse for Workspace](https://github.com/doitintl/DoiT-AdminPulse-for-Workspace?tab=readme-ov-file)
+   * NB : attention, c'est tout en anglais... et en clicodrôme sous Excel (_via_ une extension) ! 
