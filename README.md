@@ -1,6 +1,6 @@
 # Présentation
 
-<img width="564" height="422" alt="image" src="https://github.com/user-attachments/assets/5e4a45c9-385c-46bb-8272-1b07b91d456c" />
+<img width="580" height="414" alt="image" src="https://github.com/user-attachments/assets/7d62dba6-d716-44d7-a56d-9d81ec41b8eb" />
 
 
 GWS Audit est un outil écrit en Python pour l'audit de la configuration de sécurité d’un environnement Google Workspace.
