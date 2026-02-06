@@ -60,7 +60,8 @@ Il n'a pas de caractère offensif, et ne contient pas de requête destructrice p
 
 ## Lancement de l'outil
 
-Dans un terminal (Windows CMD) : _python.exe .\gws_audit.py_ 
+Dans un terminal (Windows CMD) :
+``` python.exe .\gws_audit.py ``` 
 
 NB : ne pas oublier d'enlever la sécurité du script (cf. code source)
 
