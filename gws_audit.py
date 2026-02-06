@@ -39,43 +39,48 @@ RULES = {
     # Activer ("True") ou désactiver ("False") chaque audit souhaité ou non
 
     # SPF/DKIM/DMARC
-    "require_dmarc_enforced": True,   # pas implémenté
-    "DNS_SPF_DKIM_DMARC": True,
+    "require_dmarc_enforced": False,   # pas implémenté
+    "DNS_SPF_DKIM_DMARC": False,
     
     # Identités / Comptes
-    "check_identites": True,
-    "mfa_required_for_admins": True,
-    "mfa_required_for_all_users": True,
-    "audit_sms_mfa": True,
+    "check_identites": False,
+    "mfa_required_for_admins": False,
+    "mfa_required_for_all_users": False,
+    "audit_sms_mfa": False,
     "inactive_days_threshold": 30,
     "max_super_admins": 3,
     "audit_shared_accounts_patterns": ["admin@", "support@", "info@", "contact@", "rgpd@", "administrateur@", "helpdesk@", "cse@", "drive@", "meetings@", "rh@", "sales@", "commerce@", "comptabilite@"],
-    "audit_recovery_external_email": True,
-    "audit_recovery_external_phone": True,
+    "audit_recovery_external_email": False,
+    "audit_recovery_external_phone": False,
 
     # Gmail / Exfiltration
-    "forbid_external_forwarding": True,
-    "audit_suspicious_filters": True,  # marquer comme lu + transférer + supprimer
-    "check_gmail_delegation": True,
+    "forbid_external_forwarding": False,
+    "audit_suspicious_filters": False,  # marquer comme lu + transférer + supprimer
+    "check_gmail_delegation": False,
 
     # GDrive
-    "check_drives": False,  # /!\ Peut être très long !
+    "check_drives": True,  # /!\ Peut être très long !
     "forbid_public_drive_shares": True,
     "audit_anyone_with_link": True,
     "audit_external_domain_shares": True,
 
     # Devices / périphériques
-    "check_devices": True,  
+    "check_devices": False,  
     "device_inactive_days_threshold": 60,
 
     # Groupes
-    "audit_external_groups": True,
-    "audit_anyone_can_post": True,
+    "audit_external_groups": False,
+    "audit_anyone_can_post": False,
     
     # Fichiers sensibles partagés
-    "audit_sensitive_files" : True,
+    "audit_sensitive_files" : False,
     "audit_keywords": ["password", "mdp", "mot de passe", "confidentiel", "confidential", "numéro de sécurité sociale", "médical", "IBAN", "disciplinaire", "judiciaire", "contentieux"],
     
+    #===========================
+    # /!\ Sécurité /!\
+    # Booléen à mettre à "False" uniquement si on est *sûr* de vouloir exécuter le script !
+    "kill_switch" : True,
+    #=============================
 }
 
 OUTPUT_DIR = "output"
@@ -361,6 +366,8 @@ def audit_identities(findings):
 
     print("[i] Audit des utilisateurs terminé.")
 
+
+
 # =========================
 # Audit : Groupes
 # =========================
@@ -416,93 +423,135 @@ def audit_groups(findings):
 # =========================
 # Audit : GDrive (fichiers exposés avec ACL permissives)
 # =========================
+
 def audit_drive(findings):
-    if not RULES.get("check_drives", False):
-        print("\n[i] Audit GDrive de partages permissifs désactivé (RULES.check_drives = False).")
-        return
-    print("\n[i] Audit Drive : analyse des fichiers et ACL…")
+    print("\n[i] Audit Drive : récupération des fichiers et permissions…")
 
-    # ============================
-    # 1. Récupération des utilisateurs
-    # ============================
-    users_raw = run_gam("gam print users", outfile=os.path.join(RAW_DIR, "users.csv"))
-    users = parse_csv(users_raw)
+    internal_domain = RULES.get("internal_domain", "@domainegws.fr")
+    forbid_public = RULES.get("forbid_public_drive_shares", True)
+    audit_external = RULES.get("audit_external_domain_shares", True)
+    audit_sensitive_files = RULES.get("audit_sensitive_files", True)
 
-    if not users:
-        print("[!] Aucun utilisateur récupéré.")
-        return
+    # -------------------------------
+    # 1. Récupération globale des fichiers du domaine
+    # -------------------------------
+    fields = (
+        "id,name,"
+        "owners.emailAddress,owners.displayName,"
+        "permissions.role,permissions.type,permissions.emailAddress,permissions.domain,"
+        "shared,shareable"
+    )
 
-    # ============================
-    # 2. Pour chaque utilisateur : récupérer les fichiers
-    # ============================
-    for user in users:
-        email = user.get("primaryEmail")
-        if not email:
+    gam_cmd = (
+        f"gam all users print filelist "
+        f"fields {fields}"
+    )
+
+    outfile = os.path.join(RAW_DIR, "drive_full_permissions.csv")
+    drive_csv = run_gam(gam_cmd, outfile=outfile)
+    files = parse_csv(drive_csv)
+
+    print(f"[i] {len(files)} fichiers analysés.")
+
+    # -------------------------------
+    # 2. Analyse fichier par fichier
+    # -------------------------------
+    print("\n[i] Analyse fichier par fichier...")
+    for f in files:
+        file_id = f.get("id")
+        title = f.get("name", file_id)
+
+        if not file_id:
             continue
 
-        print(f"    → Fichiers de {email}")
-
-        filelist_raw = run_gam(
-            f"gam user {email} show filelist",
-            outfile=os.path.join(RAW_DIR, f"filelist_{email}.csv")
+        # Propriétaire
+        owner = (
+            f.get("owners.0.emailAddress")
+            or f.get("owners.0.displayName")
+            or "Propriétaire inconnu"
         )
-        filelist = parse_csv(filelist_raw)
 
-        # ============================
-        # 3. Pour chaque fichier : récupérer les ACL
-        # ============================
-        for f in filelist:
-            file_id = f.get("id")
-            title = f.get("title", file_id)
+        # Reconstruction ACL
+        shared_with_list = []
+        public_access = False
 
-            if not file_id:
+        for k, v in f.items():
+            if not k.startswith("permissions."):
                 continue
 
-            acl_raw = run_gam(
-                f"gam user {email} show fileacl {file_id}",
-                outfile=os.path.join(RAW_DIR, f"acl_{file_id}.txt")
+            parts = k.split(".")
+            if len(parts) < 3:
+                continue
+
+            perm_id = parts[1]
+            perm_type = f.get(f"permissions.{perm_id}.type", "").lower()
+            email = f.get(f"permissions.{perm_id}.emailAddress", "")
+            domain = f.get(f"permissions.{perm_id}.domain", "")
+
+            # Public
+            if perm_type == "anyone":
+                public_access = True
+                shared_with_list.append("Lien public (anyoneWithLink)")
+                continue
+
+            # Domaine externe
+            if perm_type == "domain" and domain and internal_domain not in domain:
+                shared_with_list.append(f"Domaine externe : {domain}")
+                continue
+
+            # Utilisateur externe
+            if perm_type == "user" and email and internal_domain not in email:
+                shared_with_list.append(email)
+                continue
+
+            # Groupe externe
+            if perm_type == "group" and email and internal_domain not in email:
+                shared_with_list.append(f"{email} (groupe)")
+                continue
+
+        shared_with_str = ", ".join(shared_with_list)
+
+        # -------------------------------
+        # 3. Détection : fichier public
+        # -------------------------------
+        print("\n[i] Détection de fichiers partagés sans restriction...")
+        if forbid_public and public_access:
+            add_finding(
+                findings,
+                severity="HIGH",
+                category="Drive",
+                item=title,
+                issue="Fichier accessible publiquement (anyoneWithLink)",
+                recommendation="Supprimer immédiatement l'accès public.",
+                details={
+                    "file_id": file_id,
+                    "owner": owner,
+                    "shared_with": shared_with_str
+                }
             )
 
-            # GAM renvoie un texte, pas un CSV
-            text = acl_raw.lower()
+        # -------------------------------
+        # 4. Détection : partage externe
+        # -------------------------------
+        print("\n[i] Détection de partage avec des personnes extérieures")
+        if audit_external and shared_with_list:
+            add_finding(
+                findings,
+                severity="MEDIUM",
+                category="Drive",
+                item=title,
+                issue="Fichier partagé avec des utilisateurs ou domaines externes",
+                recommendation="Limiter les partages externes aux besoins stricts.",
+                details={
+                    "file_id": file_id,
+                    "owner": owner,
+                    "shared_with": shared_with_str
+                }
+            )
 
-            # ============================
-            # 4. Détection : public / anyone with link
-            # ============================
-            if RULES.get("forbid_public_drive_shares", True):
-                if "anyonewithlink" in text or "anyone" in text:
-                    add_finding(
-                        findings,
-                        severity="HIGH",
-                        category="Drive",
-                        item=title,
-                        issue="Fichier Drive accessible publiquement",
-                        recommendation="Supprimer l'accès public ou restreindre aux utilisateurs internes.",
-                        details={"fileId": file_id, "owner": email}
-                    )
 
-            # ============================
-            # 5. Détection : partage externe
-            # ============================
-            if RULES.get("audit_external_domain_shares", True):
-                for line in text.splitlines():
-                    if "user:" in line and not line.endswith(YOUR_DOMAIN.lower()):
-                        add_finding(
-                            findings,
-                            severity="MEDIUM",
-                            category="Drive",
-                            item=title,
-                            issue="Fichier partagé avec un utilisateur externe",
-                            recommendation="Vérifier si ce partage est légitime.",
-                            details={"fileId": file_id, "owner": email, "acl": line.strip()}
-                        )
 
     print("[i] Audit Drive terminé.")
-
-    # Pour aller plus loin : audit des fichiers/Drive partagés
-    # Exemple (à adapter, car potentiellement très volumineux) :
-    # gam user <admin> show filelist ... ou gam print filelist
-    # Ici, on laisse un memento pour ne pas exploser le temps d’exécution.
 
 
 # =========================
@@ -837,7 +886,9 @@ def audit_sensitive(findings):
     query = " or ".join([f"name contains '{kw}'" for kw in keywords])
 
     fields = (
-    "id,name,owners,shared,shareable,webViewLink,"
+    "id,name,"
+    "owners.emailAddress,owners.displayName,"
+    "shared,shareable,webViewLink,"
     "permissions.role,permissions.type,permissions.emailAddress,permissions.domain"
     )
 
@@ -858,7 +909,12 @@ def audit_sensitive(findings):
     for f in files:
         title = f.get("name", "Sans nom")
         file_id = f.get("id", "Identité inconnue")
-        owner = f.get("owners", "Propriétaire inconnu")
+        owner = (
+            f.get("owners.0.emailAddress")
+            or f.get("owners.0.displayName")
+            or "Propriétaire inconnu"
+        )
+
         shared = (f.get("shared") or "").lower()
         shareable = (f.get("shareable") or "").lower()
 
@@ -1376,7 +1432,7 @@ def main():
                                                  
     print(ascii_art)
                                           
-    print("                ******* Ph VIALLE *******\n             * github.com/cyb3rxp/GWS-Audit *\n                    * Licence GPLv3 *\n                     * Version 0.1 * ")
+    print("                ******* Ph VIALLE *******\n             * github.com/cyb3rxp/GWS-Audit *\n                    * Licence GPLv3 *\n                     * Version 0.2 * ")
     
     while True:
         choix = input("\n\n================ Menu ===============\n[+] Lancer l'exécution du script : O \n[+] Afficher les prérequis : P \n[+] Vérifier les prérequis : V \n[+] Quitter : Q\n\n[i] Taper la touche correspondante à votre choix : \n").strip().upper()
@@ -1415,11 +1471,15 @@ def main():
 
     print("[i] Tous les prérequis sont valides.")
     print("[i] Poursuite du script...\n")
-    
+
+    if RULES.get("kill_switch", True):
+        print("[i] Fin du script.\n")
+        sys.exit(1)
+          
     findings = []
 
     print("[i] Lancement des audits activés...\n")
-    sys.exit(0)
+
     audit_identities(findings)
     audit_groups(findings)
     audit_drive(findings)
