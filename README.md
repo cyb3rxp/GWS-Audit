@@ -66,6 +66,12 @@ Dans un terminal (Windows CMD) :
 
 NB : ne pas oublier d'enlever la sécurité du script (cf. code source)
 
+## Captures d'écran de l'exécution
+
+<img width="1453" height="1033" alt="image" src="https://github.com/user-attachments/assets/b1ba3078-d8e4-4dd0-bcdb-9eed7820a1e0" />
+
+<img width="1456" height="799" alt="image" src="https://github.com/user-attachments/assets/79b4aecf-ed1b-40ef-8b3a-c824907d0008" />
+
 
 # Pour aller plus loin
 
