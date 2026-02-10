@@ -77,4 +77,4 @@ NB : ne pas oublier d'enlever la sécurité du script (cf. code source)
 
 
 * Solution complémentaire : [AdminPulse for Workspace](https://github.com/doitintl/DoiT-AdminPulse-for-Workspace?tab=readme-ov-file)
-   * NB : attention, c'est tout en anglais... et en clicodrôme sous Excel (_via_ une extension) ! 
+   * NB : attention, c'est tout en anglais... et en clicodrôme sous Google Spreadsheets (_via_ une extension) ! 
