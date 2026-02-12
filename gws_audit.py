@@ -1437,7 +1437,7 @@ def main():
         choix = input("\n\n================ Menu ===============\n[+] Lancer l'exécution du script : O \n[+] Afficher les prérequis : P \n[+] Vérifier les prérequis : V \n[+] Quitter : Q\n\n[i] Taper la touche correspondante à votre choix : \n").strip().upper()
 
         if choix == "O":
-            print("OK, poursuite du script.\n")
+            print("[i] OK, lancement du script.\n")
             break
         elif choix == "Q":
             print("\n[i] Fin du script.\n")
@@ -1461,7 +1461,7 @@ def main():
             print("\nSaisie invalide. Tapez O, N, ou P.\n")
     
     
-    print("[i] Vérification des répertoires de travail...")
+    print("[i] Vérification des répertoires de travail (et création si besoin)")
     ensure_dirs()
     if not check_prereq():
         print("[i] Tous les prérequis ne sont pas satisfaits.")
