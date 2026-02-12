@@ -1320,12 +1320,12 @@ def save_reports(findings):
         f.write("# Rapport d’audit Google Workspace\n\n")
         f.write(f"- Domaine audité : **{DNS_domain}**\n")
         f.write(f"- Généré (Fuseau France) : {timestamp}\n")
-        f.write(f"- Total findings : {summary['TOTAL']}\n")
-        f.write(f"- CRITICAL : {summary['CRITICAL']}\n")
-        f.write(f"- HIGH : {summary['HIGH']}\n")
-        f.write(f"- MEDIUM : {summary['MEDIUM']}\n")
-        f.write(f"- LOW : {summary['LOW']}\n")
-        f.write(f"- INFO : {summary['INFO']}\n\n")
+        f.write(f"- Total détections : {summary['TOTAL']}\n")
+        f.write(f"- Détections de niveau critique : {summary['CRITICAL']}\n")
+        f.write(f"- Détections de niveau élevée : {summary['HIGH']}\n")
+        f.write(f"- Détections de niveau modérée : {summary['MEDIUM']}\n")
+        f.write(f"- Détections de niveau faible : {summary['LOW']}\n")
+        f.write(f"- Détections informatives : {summary['INFO']}\n\n")
 
         for fnd in findings_sorted:
             f.write(f"## [{fnd['severity']}] {fnd['category']} — {fnd['item']}\n")
@@ -1362,12 +1362,12 @@ def save_reports(findings):
   <p><strong>Domaine audité</strong> : {DNS_domain}</p>
   <p><strong>Généré (Fuseau France)</strong> : {timestamp}</p>
   <ul class="summary-list">
-    <li><strong>Total findings</strong> : {summary['TOTAL']}</li>
-    <li><strong>CRITICAL</strong> : {summary['CRITICAL']}</li>
-    <li><strong>HIGH</strong> : {summary['HIGH']}</li>
-    <li><strong>MEDIUM</strong> : {summary['MEDIUM']}</li>
-    <li><strong>LOW</strong> : {summary['LOW']}</li>
-    <li><strong>INFO</strong> : {summary['INFO']}</li>
+    <li><strong>Total détections</strong> : {summary['TOTAL']}</li>
+    <li><strong>Détections de niveau CRITIQUE</strong> : {summary['CRITICAL']}</li>
+    <li><strong>Détections de niveau MAJEUR</strong> : {summary['HIGH']}</li>
+    <li><strong>Détections de niveau MODERE</strong> : {summary['MEDIUM']}</li>
+    <li><strong>Détections de niveau FAIBLE</strong> : {summary['LOW']}</li>
+    <li><strong>Détections informatives</strong> : {summary['INFO']}</li>
   </ul>
 </div>
 """
