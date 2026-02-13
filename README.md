@@ -78,5 +78,6 @@ NB : ne pas oublier d'enlever la sécurité du script (cf. code source)
 * Questionnaire :
   * ["check list" de sécurité de Google](https://support.google.com/a/answer/9184226?hl=en)
 
-* Outillage complémentaire : [AdminPulse for Workspace](https://github.com/doitintl/DoiT-AdminPulse-for-Workspace?tab=readme-ov-file)
-   * NB : attention, c'est tout en anglais... et en clicodrôme sous Google Spreadsheets (_via_ une extension) ! 
+* Outillage complémentaire :
+   *  [AdminPulse for Workspace](https://github.com/doitintl/DoiT-AdminPulse-for-Workspace?tab=readme-ov-file)
+     * NB : attention, c'est tout en anglais... et en clicodrôme sous Google Spreadsheets (_via_ une extension) ! 
