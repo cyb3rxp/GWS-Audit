@@ -46,6 +46,9 @@ Il n'a pas de caractère offensif, et ne contient pas de requête destructrice p
   - NB : par défaut, les rapports et fichiers de données générés sont dans le dossier "output" (qui est paramétrable au début du script)
 - 3 formats de rapports générés en standard : JSON, MarkDown, et HTML
 
+- Voici l'entête du fichier rapport (format HTML) :
+<img width="1095" height="304" alt="image" src="https://github.com/user-attachments/assets/3ae4ef76-015b-48f9-a596-b646f4dadf81" />
+
 - Un exemple de rapport HTML (échantillon anonymisé) est fourni : [report-20260220-092026.html](https://github.com/cyb3rxp/GWS-Audit/blob/main/report-20260220-092026.html)
 
 
