@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Exemple de Rapport d’audit Google Workspace - domainegws.fr</title>
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 20px; background:#0b1020; color:#e5e9f0; }
+    h1, h2, h3 { color:#88c0d0; }
+    .meta { margin-bottom:20px; }
+    .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.8rem; font-weight:bold; }
+    .sev-CRITICAL { background:#bf616a; color:#fff; }
+    .sev-HIGH { background:#d08770; color:#fff; }
+    .sev-MEDIUM { background:#ebcb8b; color:#2e3440; }
+    .sev-LOW { background:#a3be8c; color:#2e3440; }
+    .sev-INFO { background:#81a1c1; color:#2e3440; }
+    .finding { border:1px solid #3b4252; border-radius:6px; padding:10px 12px; margin-bottom:10px; background:#2e3440; }
+    .details { font-family: "JetBrains Mono", "Fira Code", monospace; font-size:0.8rem; background:#3b4252; padding:6px 8px; border-radius:4px; white-space:pre-wrap; }
+    .summary-list li { margin-bottom:4px; }
+  </style>
+</head>
+<body>
+<h1>Rapport d’audit Google Workspace - EXEMPLE (échantillon anonymisé)</h1>
+<div class="meta">
+  <p><strong>Domaine audité</strong> : domainews.fr</p>
+  <p><strong>Généré (Fuseau France)</strong> : 20260220-092026</p>
+  <ul class="summary-list">
+    <li><strong>Total de détections</strong> : 280</li>
+    <li><strong>Détections de niveau critique</strong> : 4</li>
+    <li><strong>Détections de niveau majeur</strong> : 50</li>
+    <li><strong>Détections de niveau modéré</strong> : 200</li>
+    <li><strong>Détections de niveau faible</strong> : 22</li>
+    <li><strong>Informations</strong> : 4</li>
+  </ul>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-CRITICAL">CRITICAL</span>
+    <strong> Drive — Modèle rémunération variable Toto Tartempion - Confidentiel</strong>
+  </div>
+  <p><strong>Issue :</strong> Fichier sensible accessible publiquement</p>
+  <p><strong>Recommendation :</strong> Restreindre immédiatement les permissions de partage.</p>
+  <div class="details">{
+  "owner": "1",
+  "file_id": "1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-YYYYY-o"
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-CRITICAL">CRITICAL</span>
+    <strong> Drive — DISCOVERY - Meeting avec Entité (confidentiel)</strong>
+  </div>
+  <p><strong>Issue :</strong> Fichier sensible accessible publiquement</p>
+  <p><strong>Recommendation :</strong> Restreindre immédiatement les permissions de partage.</p>
+  <div class="details">{
+  "owner": "1",
+  "file_id": "1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-CRITICAL">CRITICAL</span>
+    <strong> Entité | Contentieux</strong>
+  </div>
+  <p><strong>Issue :</strong> Fichier sensible accessible publiquement</p>
+  <p><strong>Recommendation :</strong> Restreindre immédiatement les permissions de partage.</p>
+  <div class="details">{
+  "owner": "1",
+  "file_id": "1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-CRITICAL">CRITICAL</span>
+    <strong> Accord de confidentialite Entité.doc</strong>
+  </div>
+  <p><strong>Issue :</strong> Fichier sensible accessible publiquement</p>
+  <p><strong>Recommendation :</strong> Restreindre immédiatement les permissions de partage.</p>
+  <div class="details">{
+  "owner": "1",
+  "file_id": "1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+}</div>
+</div>
+
+
+<div class="finding">
+  <div>
+    <span class="badge sev-HIGH">HIGH</span>
+    <strong> Identities — Tutu.lapraline@domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Compte utilisateur sans MFA actif</p>
+  <p><strong>Recommendation :</strong> Imposer l’activation MFA pour tous les comptes utilisateurs.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-HIGH">HIGH</span>
+    <strong> Identities — john.doe@domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Compte utilisateur sans MFA actif</p>
+  <p><strong>Recommendation :</strong> Imposer l’activation MFA pour tous les comptes utilisateurs.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-HIGH">HIGH</span>
+    <strong> Identities — Global</strong>
+  </div>
+  <p><strong>Issue :</strong> Trop de comptes super-admin (4)</p>
+  <p><strong>Recommendation :</strong> Réduire le nombre de super-admins à moins de 4.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-HIGH">HIGH</span>
+    <strong> Gmail — germaine@domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Transfert Gmail natif vers une adresse externe</p>
+  <p><strong>Recommendation :</strong> Vérifier la légitimé et désactiver le transfert externe dans Gmail.</p>
+  <div class="details">{
+  "forward_to": "qsdfghjklm@helpdesk.com, Verification Status: accepted"
+}</div>
+</div>
+
+
+<div class="finding">
+  <div>
+    <span class="badge sev-HIGH">HIGH</span>
+    <strong> Gmail — ext.alfred@domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Transfert Gmail natif vers une adresse externe</p>
+  <p><strong>Recommendation :</strong> Vérifier la légitimé et désactiver le transfert externe dans Gmail.</p>
+  <div class="details">{
+  "forward_to": "alfred.p@boitedepresta.Fr, Verification Status: accepted"
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-HIGH">HIGH</span>
+    <strong> Gmail — facturation@domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Transfert Gmail natif vers une adresse externe</p>
+  <p><strong>Recommendation :</strong> Vérifier la légitimé et désactiver le transfert externe dans Gmail.</p>
+  <div class="details">{
+  "forward_to": "chantale@domainegws.fr, Verification Status: accepted (1/16)"
+}</div>
+</div>
+
+
+<div class="finding">
+  <div>
+    <span class="badge sev-HIGH">HIGH</span>
+    <strong> Gmail — janine.martin@domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Transfert Gmail natif vers une adresse externe</p>
+  <p><strong>Recommendation :</strong> Vérifier la légitimé et désactiver le transfert externe dans Gmail.</p>
+  <div class="details">{
+  "forward_to": "janinemartin@gmail.com, Verification Status: accepted"
+}</div>
+</div>
+
+
+<div class="finding">
+  <div>
+    <span class="badge sev-HIGH">HIGH</span>
+    <strong> Drive — IBAN.pdf</strong>
+  </div>
+  <p><strong>Issue :</strong> Fichier sensible partagé avec des utilisateurs externes</p>
+  <p><strong>Recommendation :</strong> Restreindre les destinataires externes.</p>
+  <div class="details">{
+  "owner": "1",
+  "file_id": "1XXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "shared_with": "utilisateur1@entreprise.fr, utilisateur2@entreprise.fr"
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-HIGH">HIGH</span>
+    <strong> Drive — CONTRAT-CADRE-SOUS-TRAITANCE CONFIDENTIEL AVOCAT CLIENT.docx</strong>
+  </div>
+  <p><strong>Issue :</strong> Fichier sensible partagé avec des utilisateurs externes</p>
+  <p><strong>Recommendation :</strong> Restreindre les destinataires externes.</p>
+  <div class="details">{
+  "owner": "1",
+  "file_id": "1XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "shared_with": "marcel-ext@entreprise2.fr, gerard-ext@entreprise2.fr"
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-HIGH">HIGH</span>
+    <strong> Drive — Casier Judiciaire B3.pdf</strong>
+  </div>
+  <p><strong>Issue :</strong> Fichier sensible partagé avec des utilisateurs externes</p>
+  <p><strong>Recommendation :</strong> Restreindre les destinataires externes.</p>
+  <div class="details">{
+  "owner": "1",
+  "file_id": "1XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "shared_with": "jean.dupont@entreprise3.com, michel.durant@entreprise3.com"
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-HIGH">HIGH</span>
+    <strong> Email — domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> SPF invalide : dépassement de la limite RFC (10 DNS lookups)</p>
+  <p><strong>Recommendation :</strong> Réduire le nombre d'includes pour revenir sous la limite RFC 7208.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-MEDIUM">MEDIUM</span>
+    <strong> Identities — maurice.dubert@domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Numéro de téléphone de récupération NON configuré</p>
+  <p><strong>Recommendation :</strong> Vérifier que les numéros de récupération sont configurés.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-MEDIUM">MEDIUM</span>
+    <strong> Identities — resa@domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Compte inactif depuis plus de 30 jours</p>
+  <p><strong>Recommendation :</strong> Désactiver ou supprimer les comptes inactifs non justifiés.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-MEDIUM">MEDIUM</span>
+    <strong> Identities — resa@domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Numéro de téléphone de récupération NON configuré</p>
+  <p><strong>Recommendation :</strong> Vérifier que les numéros de récupération sont configurés.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-MEDIUM">MEDIUM</span>
+    <strong> devices — XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</strong>
+  </div>
+  <p><strong>Issue :</strong> Appareil inactif depuis 68 jours</p>
+  <p><strong>Recommendation :</strong> Vérifier si l'appareil est encore utilisé ou le retirer.</p>
+  <div class="details">{
+  "user": "marc.dujardin@domainegws.fr",
+  "lastSync": "2025-11-29T13:57:53Z",
+  "days": 68
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-MEDIUM">MEDIUM</span>
+    <strong> devices — AFiXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</strong>
+  </div>
+  <p><strong>Issue :</strong> Appareil inactif depuis 910 jours</p>
+  <p><strong>Recommendation :</strong> Vérifier si l'appareil est encore utilisé ou le retirer.</p>
+  <div class="details">{
+  "user": "norbert@domainegws.fr",
+  "lastSync": "2023-08-09T19:59:58Z",
+  "days": 910
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-MEDIUM">MEDIUM</span>
+    <strong> Drive — IBAN client SOCIETE.pdf</strong>
+  </div>
+  <p><strong>Issue :</strong> Fichier potentiellement sensible (nom contient un mot-clé critique)</p>
+  <p><strong>Recommendation :</strong> Vérifier le contenu du fichier et le sécuriser si nécessaire.</p>
+  <div class="details">{
+  "owner": "jean-claude.dusse@domainegws.fr",
+  "file_id": "1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "shared": "true",
+  "shareable": "",
+  "shared_with": "marie-clause.meunier@entreprise4.fr"
+}</div>
+</div>
+
+
+<div class="finding">
+  <div>
+    <span class="badge sev-MEDIUM">MEDIUM</span>
+    <strong> Drive — Accord de Confidentialité - CLIENT.docx</strong>
+  </div>
+  <p><strong>Issue :</strong> Fichier potentiellement sensible (nom contient un mot-clé critique)</p>
+  <p><strong>Recommendation :</strong> Vérifier le contenu du fichier et le sécuriser si nécessaire.</p>
+  <div class="details">{
+  "owner": "jean-claude.dusse@domainegws.fr",
+  "file_id": "1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "shared": "true",
+  "shareable": "",
+  "shared_with": ""
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-MEDIUM">MEDIUM</span>
+    <strong> Drive — Mots de passe Google Chrome.csv</strong>
+  </div>
+  <p><strong>Issue :</strong> Fichier potentiellement sensible (nom contient un mot-clé critique)</p>
+  <p><strong>Recommendation :</strong> Vérifier le contenu du fichier et le sécuriser si nécessaire.</p>
+  <div class="details">{
+  "owner": "jean-claude.dusse@domainegws.fr",
+  "file_id": "1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "shared": "true",
+  "shareable": "",
+  "shared_with": ""
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-MEDIUM">MEDIUM</span>
+    <strong> Drive — Flux XML - Login et MDP.xlsx</strong>
+  </div>
+  <p><strong>Issue :</strong> Fichier potentiellement sensible (nom contient un mot-clé critique)</p>
+  <p><strong>Recommendation :</strong> Vérifier le contenu du fichier et le sécuriser si nécessaire.</p>
+  <div class="details">{
+  "owner": "jean-marie.grandchef@domainegws.fr",
+  "file_id": "1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "shared": "true",
+  "shareable": "",
+  "shared_with": ""
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-MEDIUM">MEDIUM</span>
+    <strong> Drive — Extrait Casier Judiciaire candidatpdf</strong>
+  </div>
+  <p><strong>Issue :</strong> Fichier potentiellement sensible (nom contient un mot-clé critique)</p>
+  <p><strong>Recommendation :</strong> Vérifier le contenu du fichier et le sécuriser si nécessaire.</p>
+  <div class="details">{
+  "owner": "ophelia.drh@domainegws.fr",
+  "file_id": "1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "shared": "true",
+  "shareable": "",
+  "shared_with": ""
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-MEDIUM">MEDIUM</span>
+    <strong> Email — domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> DMARC partiellement appliqué (pct=90%)</p>
+  <p><strong>Recommendation :</strong> Passer pct=100 pour une application complète.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-MEDIUM">MEDIUM</span>
+    <strong> Email — domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> DMARC non appliqué aux sous-domaines (sp=none)</p>
+  <p><strong>Recommendation :</strong> Définir sp=quarantine ou sp=reject.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-LOW">LOW</span>
+    <strong> Identities — yoann.mercier@domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Email de récupération externe</p>
+  <p><strong>Recommendation :</strong> Limiter les emails de récupération à des adresses internes ou contrôlées.</p>
+  <div class="details">{
+  "recovery_email": "yoann.m@gmail.com"
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-LOW">LOW</span>
+    <strong> Groups — project-sensible@domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> N’importe qui peut poster sur ce groupe</p>
+  <p><strong>Recommendation :</strong> Restreindre l’envoi de messages aux membres ou à des expéditeurs approuvés.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-LOW">LOW</span>
+    <strong> devices — AFiXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</strong>
+  </div>
+  <p><strong>Issue :</strong> Statut de chiffrement inconnu</p>
+  <p><strong>Recommendation :</strong> Vérifier si l’appareil est géré via Android Enterprise ou iOS supervisé.</p>
+  <div class="details">{
+  "user": "lea.stagiaire@domainegws.fr",
+  "encryptionStatus": ""
+}</div>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-LOW">LOW</span>
+    <strong> Email — domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Absence de tag DMARC 'rua'</p>
+  <p><strong>Recommendation :</strong> Ajouter rua=mailto:adresse@domaine.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-LOW">LOW</span>
+    <strong> Email — default._bimi.domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Aucun enregistrement BIMI détecté</p>
+  <p><strong>Recommendation :</strong> Ajouter un enregistrement BIMI pour afficher le logo de la marque dans les boîtes de réception compatibles.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-INFO">INFO</span>
+    <strong> Email — s2._domainkey.domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Sélecteur DKIM détecté</p>
+  <p><strong>Recommendation :</strong> Vérifier que la clé DKIM est bien alignée avec DMARC.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-INFO">INFO</span>
+    <strong> Email — mailjet._domainkey.domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Sélecteur DKIM détecté</p>
+  <p><strong>Recommendation :</strong> Vérifier que la clé DKIM est bien alignée avec DMARC.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-INFO">INFO</span>
+    <strong> Email — s1._domainkey.domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Sélecteur DKIM détecté</p>
+  <p><strong>Recommendation :</strong> Vérifier que la clé DKIM est bien alignée avec DMARC.</p>
+</div>
+
+<div class="finding">
+  <div>
+    <span class="badge sev-INFO">INFO</span>
+    <strong> Email — google._domainkey.domainegws.fr</strong>
+  </div>
+  <p><strong>Issue :</strong> Sélecteur DKIM détecté</p>
+  <p><strong>Recommendation :</strong> Vérifier que la clé DKIM est bien alignée avec DMARC.</p>
+</div>
+</body>
+</html>

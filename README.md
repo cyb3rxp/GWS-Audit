@@ -46,6 +46,8 @@ Il n'a pas de caractère offensif, et ne contient pas de requête destructrice p
   - NB : par défaut, les rapports et fichiers de données générés sont dans le dossier "output" (qui est paramétrable au début du script)
 - 3 formats de rapports générés en standard : JSON, MarkDown, et HTML
 
+- Un exemple de rapport HTML (échantillon anonymisé) est fourni : report-20260220-092026.html
+
 
 # Usage
 
