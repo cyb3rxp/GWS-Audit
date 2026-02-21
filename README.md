@@ -47,7 +47,8 @@ Il n'a pas de caractère offensif, et ne contient pas de requête destructrice p
 - 3 formats de rapports générés en standard : JSON, MarkDown, et HTML
 
 - Voici l'entête du fichier rapport (format HTML) :
-<img width="1095" height="304" alt="image" src="https://github.com/user-attachments/assets/3ae4ef76-015b-48f9-a596-b646f4dadf81" />
+<img width="1088" height="293" alt="image" src="https://github.com/user-attachments/assets/9ca2352b-8043-4681-9a31-e39e3de13bab" />
+
 
 - Un exemple de rapport HTML (échantillon anonymisé) est fourni : [report-20260220-092026.html](https://github.com/cyb3rxp/GWS-Audit/blob/main/report-20260220-092026.html)
 
