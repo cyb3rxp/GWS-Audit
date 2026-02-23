@@ -79,11 +79,19 @@ NB : ne pas oublier d'enlever la sécurité du script (cf. code source)
 <img width="1456" height="799" alt="image" src="https://github.com/user-attachments/assets/79b4aecf-ed1b-40ef-8b3a-c824907d0008" />
 
 
+# Evolutions futures
+
+## Détections de comptes non managés
+
+* Exploitation de la [commande GAM](https://github.com/cyb3rxp/GWS-Audit/edit/main/README.md)
+
 # Pour aller plus loin
 
-* Questionnaire :
+## Questionnaires 
+* Questionnaire Google :
   * ["check list" de sécurité de Google](https://support.google.com/a/answer/9184226?hl=en)
 
-* Outillage complémentaire :
+## Outillage
+* Outil complémentaire :
    *  [AdminPulse for Workspace](https://github.com/doitintl/DoiT-AdminPulse-for-Workspace?tab=readme-ov-file)
      * NB : attention, c'est tout en anglais... et en clicodrôme sous Google Spreadsheets (_via_ une extension) ! 
