@@ -81,9 +81,14 @@ NB : ne pas oublier d'enlever la sécurité du script (cf. code source)
 
 # Evolutions futures
 
-## Détections de comptes non managés
+## Détection de comptes non managés
 
-* Exploitation de la [commande GAM](https://github.com/cyb3rxp/GWS-Audit/edit/main/README.md)
+* Exploitation de la [commande GAM](https://github.com/GAM-team/GAM/wiki/Unmanaged-Accounts)
+
+## Détection de délégation illégitime
+
+* Exploitation de la [commande GAM](https://github.com/GAM-team/GAM/wiki/Users-Gmail-Delegates)
+
 
 # Pour aller plus loin
 
