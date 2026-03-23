@@ -1,4 +1,4 @@
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re) ![Last Update](https://img.shields.io/github/last-commit/cyb3rxp/GWS-audit) ![GitHub stars](https://img.shields.io/github/stars/cyb3rxp/GWS-audit?style=social) ![License](https://img.shields.io/github/license/cyb3rxp/GWS-audit) ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)
+![Last Update](https://img.shields.io/github/last-commit/cyb3rxp/GWS-audit) ![GitHub stars](https://img.shields.io/github/stars/cyb3rxp/GWS-audit?style=social) ![License](https://img.shields.io/github/license/cyb3rxp/GWS-audit) ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)
 
 # Présentation
 
