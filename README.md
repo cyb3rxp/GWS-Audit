@@ -1,3 +1,5 @@
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re) ![Last Update](https://img.shields.io/github/last-commit/cyb3rxp/awesome-soc) ![GitHub stars](https://img.shields.io/github/stars/cyb3rxp/awesome-soc?style=social) ![License](https://img.shields.io/github/license/cyb3rxp/awesome-soc) ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)
+
 # Présentation
 
 <img width="580" height="414" alt="image" src="https://github.com/user-attachments/assets/7d62dba6-d716-44d7-a56d-9d81ec41b8eb" />
